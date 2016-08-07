@@ -1,0 +1,7 @@
+django
+django-registration
+django-bootstrap3
+pillow
+pytz
+python-dateutil
+mock

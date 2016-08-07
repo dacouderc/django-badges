@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <style>
+   h1 {
+       margin: 0px;
+       padding: 0px;
+       text-align: center;
+   }
+
+   .badge-list {
+       position: absolute;
+       height: 100%;
+       right: 0px;
+       top: 30px;
+   }
+
+   .user-badge {
+       font-weight: bold;
+       color: crimson;
+       margin: 0px 5px;
+       display: inline-block;
+   }
+
+   .badge-star:before {
+       content: "[STAR]";
+   }
+
+   .badge-collector:before {
+       content: "[COLLECTOR]";
+   }
+
+   .badge-pioneer:before {
+       content: "[PIONEER]";
+   }
+  </style>
+
+  <script>
+   $(function() {
+       $.getJSON('/badges', function(badges) {
+           container = $('#badge-list');
+           badges.forEach(function(badge) {
+               var div = document.createElement('div');
+               div.className = 'user-badge ' + 'badge-' + badge;
+               container.prepend(div);
+           });
+       });
+   });
+  </script>
+
+  <div class="well title">
+    <h1>{% block title %}{% endblock %}</h1>
+    <div class="badge-list" id="badge-list"></div>
+  </div>
+  {% block main %} {% endblock %}
+{% endblock %}

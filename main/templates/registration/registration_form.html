@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% load bootstrap3 %}
+
+{% block title %}
+  Register
+{% endblock %}
+
+{% block content %}
+  <div class="container" style="width:400px">
+    <form method="POST">
+      {% csrf_token %}
+      <legend>Register</legend>
+      {% bootstrap_form form %}
+      {% buttons %}{% endbuttons %}
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </div>
+{% endblock %}

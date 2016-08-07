@@ -1,0 +1,19 @@
+{% extends "site.html" %}
+
+{% block title %}
+  Model {{ model.name }}
+{% endblock %}
+
+{% block main %}
+  <div class="container" style="text-align: center">
+    <img src="{{ MEDIA_URL }}{{ model.data }}" style="width:90%; margin: auto" />
+
+    <dl>
+      <dt>Creator</dt>
+      <dd>{{ model.owner.username }}</dd>
+      <dt>Views</dt>
+      <dd>{{ model.view_count }}</dd>
+    </dl>
+  </div>
+
+{% endblock %}

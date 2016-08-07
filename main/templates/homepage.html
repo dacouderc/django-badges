@@ -1,0 +1,34 @@
+{% extends "site.html" %}
+
+{% load bootstrap3 %}
+
+{% block title %}Models{% endblock %}
+
+{% block main %}
+  {% if models %}
+    <div class="container">
+      {% for item in models %}
+        <a href="{% url "model.view" item.id %}" style="display: inline-block">
+          <div><img src="{{MEDIA_URL}}{{item.data}}" width="80px"/></div>
+          <div style="text-align: center">{{item.name}}</div>
+        </a>
+      {% endfor %}
+    </div>
+  {% else %}
+    No models yet
+  {% endif %}
+
+  <hr/>
+
+  <div class="container" style="width:400px">
+    <form method="POST" enctype='multipart/form-data'>
+      {% csrf_token %}
+      <legend>Upload a model</legend>
+      {% bootstrap_form upload_form %}
+      {% buttons %}{% endbuttons %}
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Upload</button>
+      </div>
+    </form>
+  </div>
+{% endblock %}

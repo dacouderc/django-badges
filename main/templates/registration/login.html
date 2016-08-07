@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% load bootstrap3 %}
+
+{% block title %}
+  Login
+{% endblock %}
+
+{% block content %}
+
+  <div class="container" style="width:400px">
+    <form method="POST">
+      {% csrf_token %}
+      <legend>Login</legend>
+      {% bootstrap_form form %}
+      {% buttons submit="Sign-in"%}
+      <div style="float: right; padding: 12px 0">
+        <a href="/accounts/register/">Create Account</a>
+      </div>
+      {% endbuttons %}
+      </div>
+    </form>
+  </div>
+
+{% endblock %}
